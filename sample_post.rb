@@ -1,4 +1,4 @@
-require 'net/HTTP'
+require 'net/http'
 require 'json'
 require 'openssl'
 require 'active_record'
