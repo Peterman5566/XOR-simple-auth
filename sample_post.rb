@@ -5,7 +5,7 @@ require 'active_record'
 require 'sinatra'
 require 'erb'
 require 'logger'
-require 'haml'
+require './haml'
 
 # Setup URI for HTTP connection
 uri = URI('https://simple-auth.herokuapp.com/api/v1/users')
