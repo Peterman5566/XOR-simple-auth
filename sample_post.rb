@@ -6,10 +6,10 @@ require 'sinatra'
 require 'erb'
 require 'logger'
 require 'rubygems'
-require 'bcrypt'
+#require 'bcrypt'
 
 # Setup URI for HTTP connection
-uri = URI('https://simple-auth.herokuapp.com/api/v1/users')
+uri = URI('https://stark-hamlet-1008.herokuapp.com/api/v1/users')
 #uri = URI('http://localhost:4000/api/v1/users/')
 http = Net::HTTP.new(uri.host, uri.port)
 
@@ -23,14 +23,14 @@ get '/create_user' do
   haml :create
 end
 
-password_salt = BCrypt::Engine.generate_salt
+#password_salt = BCrypt::Engine.generate_salt
 
 post '/new_user' do
   @create_name = params["create_name"]
   @create_email = params["create_email"]
   @create_password = params["create_password"]
 
-  @create_password = BCrypt::Engine.hash_secret(params[:@create_password], password_salt)
+ # @create_password = BCrypt::Engine.hash_secret(params[:@create_password], password_salt)
   @create_bio = params["create_bio"]
 
   # Setup HTTP request object
@@ -46,4 +46,8 @@ post '/new_user' do
 
 
   haml :show
+end
+
+get'/create_successful'do
+  haml :login_successful
 end
