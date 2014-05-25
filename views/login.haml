@@ -1,0 +1,12 @@
+%c user login
+%form{:action => "/logining",:method =>"post", :enctype => "application/json"}
+  %legend
+  //   A simple question
+  %p
+    %label{:for => ""} Please enter your name
+    %input{:type =>"textbox", :name =>"login_name"}
+  %p
+    %label{:for => ""} Please enter your password
+    %input{:type =>"textbox", :name =>"login_password"}
+  %p
+    %input{:type =>"submit",:value=>"Login!"}

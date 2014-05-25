@@ -1,0 +1,18 @@
+%c create user
+%form{:action => "/new_user",:method =>"post", :enctype => "application/json"}
+  %legend
+  //   A simple question
+  %p
+    %label{:for => ""} Please enter your name
+    %input{:type =>"textbox", :name =>"create_name"}
+  %p
+    %label{:for => ""} Please enter your email
+    %input{:type =>"textbox", :name =>"create_email"}
+  %p
+    %label{:for => ""} Please enter your password
+    %input{:type =>"textbox", :name =>"create_password"}
+  %p
+    %label{:for => ""} Please enter your bio
+    %input{:type =>"textbox", :name =>"create_bio"}
+  %p
+    %input{:type =>"submit",:value=>"Submit!"}
