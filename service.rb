@@ -3,6 +3,21 @@ require 'sinatra'
 require 'erb'
 require_relative 'models/user.rb'
 require 'logger'
+require 'net/HTTP'
+require 'json'
+require 'openssl'
+require 'rubygems'
+
+# Setup URI for HTTP connection
+#uri = URI('https://stark-hamlet-1008.herokuapp.com/api/v1/users')
+#uri = URI('http://localhost:4000/api/v1/users/')
+http = Net::HTTP.new(uri.host, uri.port)
+
+# Setup for HTTPS connection
+http.use_ssl = true
+# TODO: use VERIFY_PEER verification mode in production environment
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
 
 # setting up a logger. levels -> DEBUG < INFO < WARN < ERROR < FATAL < UNKNOWN
 log = Logger.new(STDOUT)
@@ -97,6 +112,8 @@ post '/api/v1/users' do
     user = User.create(JSON.parse(request.body.read))
     if user.valid?
       user.to_json
+      uri = URI('http://cryptic-wildwood-4595.herokuapp.com/create_successful')
+      NET::HTTP.get(uri)
     else
       error 400, user.errors.to_json # :bad_request
     end

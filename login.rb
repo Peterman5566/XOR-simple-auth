@@ -27,7 +27,7 @@ post '/logining' do
   @login_password = params["login_password"]
 
   # Setup HTTP request object
-  req = Net::HTTP::Post.new('https://simple-auth.herokuapp.com/api/v1/users/@login_name/sessions',
+  req = Net::HTTP::Post.new(uri,
                             initheader = {'Content-Type' =>'application/json'})
   req.body = {
       name: @login_name,
