@@ -7,8 +7,8 @@ require 'erb'
 require 'logger'
 require 'haml'
 
-# Setup URI for HTTP connection
-uri = URI('https://simple-auth.herokuapp.com/api/v1/users')
+# Setup URI for HTTP connectionA
+uri = URI('https://pure-gorge-8887.herokuapp.com/api/v1/users')
 #uri = URI('http://localhost:4000/api/v1/users/')
 http = Net::HTTP.new(uri.host, uri.port)
 
@@ -39,6 +39,9 @@ post '/new_user' do
 # Send request and wait for HTTP response
   res = http.request(req)
 
+  if res
+    haml :create_successful
+  end
 
   haml :show
 end

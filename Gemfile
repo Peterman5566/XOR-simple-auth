@@ -4,6 +4,7 @@ ruby '2.0.0'
 # service
 gem 'activerecord'
 gem 'sinatra'
+gem 'haml'
 
 group :development, :test do
   gem 'sqlite3'       # local
