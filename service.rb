@@ -8,6 +8,9 @@ require 'json'
 #require 'openssl'
 require 'rubygems'
 
+uri = URI('https://immense-refuge-6393.herokuapp.com/api/v1/users/')
+http = Net::HTTP.new(uri.host, uri.port)
+
 # setting up a logger. levels -> DEBUG < INFO < WARN < ERROR < FATAL < UNKNOWN
 log = Logger.new(STDOUT)
 log.level = Logger::DEBUG
@@ -28,11 +31,6 @@ post '/new_user' do
   @create_email = params["create_email"]
   @create_password = params["create_password"]
   @create_bio = params["create_bio"]
-
-  uri = URI('/api/v1/users')
-  #uri = URI('http://localhost:4000/api/v1/users/')
-  http = Net::HTTP.new(uri.host, uri.port)
-
 
   # Setup HTTP request object
   req = Net::HTTP::Post.new(uri,

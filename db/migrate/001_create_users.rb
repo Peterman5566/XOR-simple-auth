@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
-    create_table :users, :primary_key => :email do |t|
+    create_table :users do |t|
       t.string :name
       t.string :email
       t.string :password
