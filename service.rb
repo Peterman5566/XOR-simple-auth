@@ -8,7 +8,8 @@ require 'json'
 #require 'openssl'
 require 'rubygems'
 
-uri = URI('https://immense-refuge-6393.herokuapp.com/api/v1/users/')
+#uri = URI('https://immense-refuge-6393.herokuapp.com/api/v1/users/')
+uri = URI('http://localhost:4567/api/v1/users/')
 http = Net::HTTP.new(uri.host, uri.port)
 
 # setting up a logger. levels -> DEBUG < INFO < WARN < ERROR < FATAL < UNKNOWN
@@ -17,9 +18,9 @@ log.level = Logger::DEBUG
 
 
 # Setup for HTTPS connection
-http.use_ssl = true
+#http.use_ssl = true
 # TODO: use VERIFY_PEER verification mode in production environment
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+#http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 #create user
 get '/create_user' do
